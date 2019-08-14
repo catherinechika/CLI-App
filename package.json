@@ -1,0 +1,26 @@
+{
+  "name": "CLI-App",
+  "version": "1.0.0",
+  "description": "LIRI is a _Language_ Interpretation and Recognition Interface. LIRI is a command line node app that takes in parameters and gives you back from spotify and OMBD",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "dotenv": "^8.0.0",
+    "node-spotify-api": "^1.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/catherinechika/CLI-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/catherinechika/CLI-App/issues"
+  },
+  "homepage": "https://github.com/catherinechika/CLI-App#readme"
+}
