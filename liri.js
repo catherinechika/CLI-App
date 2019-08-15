@@ -1,6 +1,3 @@
-// require("dotenv").config();
-// var keys = require("./keys.js");
-// var spotify = new Spotify(keys.spotify);
 require("dotenv").config()
 var axios = require("axios");
 
@@ -64,43 +61,46 @@ if (process.argv[2] == "movie-this") {
         }
 
         songName = songName.toString()
-        consoled(songName)
+        spotify.search({ type: 'track', query: songName }, function (err, data) {
+            if (err) {
+                return console.log('Error occurred: ' + err);
+            }
+
+            let lower = ""
+            let rightArr;
+            let index = []
+            let array = data.tracks.items
+            let song;
+
+            for (i = 0; i < array.length; i++) {
+
+                let song = data.tracks.items[i].name.toLowerCase();
+                if (song == songName) {
+                    index.push(i)
+                }
+            }
+            rightArr = data.tracks.items[index[0]]
+            console.log("This song was made by " + rightArr.album.artists[0].name)
+            console.log("The name of the song is " + rightArr.name)
+            console.log("The album for this song is " + rightArr.album.name)
+            console.log("Click the following link to hear this song " + rightArr.external_urls.spotify)
+        })
 
 
 
     } else {
-        let songName = "The Sign"
-        consoled(songName)
-    }
-
-};
-
-
-
-function consoled(songName) {
-    spotify.search({ type: 'track', query: songName }, function (err, data) {
-        if (err) {
-            return console.log('Error occurred: ' + err);
-        }
-
-        let lower = ""
-        let rightArr;
-        let index = []
-        let array = data.tracks.items
-        let song;
-
-        for (i = 0; i < array.length; i++) {
-
-            let song = data.tracks.items[i].name.toLowerCase();
-            if (song == songName) {
-                index.push(i)
+        let songName = "The Sign (US Album) [Remastered]"
+        spotify.search({ type: 'track', query: songName }, function (err, data) {
+            if (err) {
+                return console.log('Error occurred: ' + err);
             }
-        }
-        rightArr = data.tracks.items[index[0]]
-        console.log("This song was made by " + rightArr.album.artists[0].name)
-        console.log("The name of the song is " + rightArr.name)
-        console.log("The album for this song is " + rightArr.album.name)
-        console.log("Click the following link to hear this song " + rightArr.external_urls.spotify)
-    })
+            console.log("This song was made by " + data.tracks.items[0].album.artists[0].name)
+            console.log("The name of the song is " + data.tracks.items[0].name)
+            console.log("The album for this song is " + data.tracks.items[0].album.name)
+            console.log("Click the following link to hear this song " + data.tracks.items[0].external_urls.spotify)
+        })
+    }
 }
+
+
 
