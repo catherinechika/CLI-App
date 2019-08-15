@@ -7,7 +7,3 @@ To view this app in action you can:
 2. Click on the node.js OMBD and Spotify video.mp4 file in the folder
 3. Click on the node.js OMBD and Spotify Screenshot.png file in the folder
 
-
-TO-DO
-- Include screenshots, gifs or videos of the app functioning
-- Contain a link to a deployed version of the app
